@@ -125,5 +125,5 @@ public class UniqueFinderTest {
         expected.add(':');
         expected.add('0');
         assertEquals(expected, uniqueFinder.uniqueChars("<3 java && my team @ pm @ 3:00"));
-    }*/
+    }
 }

@@ -17,7 +17,7 @@ class HouseCupTest {
 
     private MariaDbDataSource dataSource;
 
-    /*private HouseCup houseCup;
+    private HouseCup houseCup;
 
     @BeforeEach
     void init() throws SQLException {
@@ -84,6 +84,6 @@ class HouseCupTest {
             insertHousePointsStatement.execute(insertHousePoints);
         }
 
-    }*/
+    }
 
 }

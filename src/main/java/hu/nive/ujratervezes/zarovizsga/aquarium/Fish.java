@@ -28,8 +28,8 @@ public abstract class Fish {
 
     public abstract void feed();
 
-    public String status(Fish fish){
-        return fish.toString();
+    public String status(){
+        return this.toString();
     }
 
     public boolean hasMemoryLoss(){
@@ -45,6 +45,6 @@ public abstract class Fish {
 
     @Override
     public String toString() {
-        return name + ", weight: " + weight + ", color: " + color + ", short-term-memory-loss: " + memoryLoss;
+        return name + ", weight: " + weight + ", color: " + color + ", short term memory loss: " + memoryLoss;
     }
 }

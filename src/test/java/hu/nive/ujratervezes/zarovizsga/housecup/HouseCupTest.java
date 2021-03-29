@@ -32,7 +32,7 @@ class HouseCupTest {
         createDummyData();
     }
 
-    @Test
+    /*@Test
     void test_get_points_of_house() throws SQLException {
         assertEquals(30, houseCup.getPointsOfHouse("Gryffindor"));
     }
@@ -40,6 +40,16 @@ class HouseCupTest {
     @Test
     void test_get_points_of_house_one() throws SQLException {
         assertEquals(5, houseCup.getPointsOfHouse("Slytherin"));
+    } */
+
+    @Test
+    void test_get_points_of_house_faster() throws SQLException {
+        assertEquals(30, houseCup.getPointsOfHouseFaster("Gryffindor"));
+    }
+
+    @Test
+    void test_get_points_of_house_one_faster() throws SQLException {
+        assertEquals(5, houseCup.getPointsOfHouseFaster("Slytherin"));
     }
 
 

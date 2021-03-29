@@ -15,7 +15,7 @@ public class HouseCup {
         this.dataSource = dataSource;
     }
 
-    public int getPointsOfHouse(String house){
+    public int getPointsOfHouse(String house) {
         try (
                 Connection conn = dataSource.getConnection();
                 PreparedStatement stmt =
@@ -27,7 +27,8 @@ public class HouseCup {
 
         } catch (SQLException sqle) {
             throw new IllegalArgumentException("Query failed!", sqle);
-        }    }
+        }
+    }
 
     private int calculateResult(PreparedStatement stmt) {
         int sum = 0;
@@ -42,4 +43,34 @@ public class HouseCup {
             throw new IllegalArgumentException("Error by query", sqle);
         }
     }
+
+    public int getPointsOfHouseFaster(String house) {
+        try (
+                Connection conn = dataSource.getConnection();
+                PreparedStatement stmt =
+                        conn.prepareStatement("SELECT SUM(points_earned) AS total FROM house_points WHERE house_name = ? GROUP BY house_name;")
+
+        ) {
+            stmt.setString(1, house);
+            return getResult(stmt);
+
+        } catch (SQLException sqle) {
+            throw new IllegalArgumentException("Query failed!", sqle);
+        }
+    }
+
+    private int getResult(PreparedStatement stmt) {
+        int sum = 0;
+        try (
+                ResultSet rs = stmt.executeQuery()
+        ) {
+            if(rs.next()) {
+                sum = rs.getInt("total");
+            }
+            return sum;
+        } catch (SQLException sqle) {
+            throw new IllegalArgumentException("Error by query", sqle);
+        }
+    }
+
 }

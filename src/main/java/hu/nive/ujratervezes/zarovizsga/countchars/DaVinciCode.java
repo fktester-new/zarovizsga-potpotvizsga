@@ -14,10 +14,9 @@ public class DaVinciCode {
         int result = 0;
         try (BufferedReader reader = Files.newBufferedReader(Path.of(fileName))) {
             String line;
-            int sum;
             while ((line = reader.readLine()) != null) {
-                sum = parseLine(line, c);
-                result += sum;
+                result += parseLine(line, c);
+
             }
             return result;
         } catch (IOException ioe) {
